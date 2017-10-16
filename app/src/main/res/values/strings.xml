@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Blood Bank EU</string>
+
+    <string name="blood_prompt">Choose Blood Group</string>
+    <string name="department_prompt">Choose Department</string>
+
+    <string-array name="blood_group">
+
+        <item>A+</item>
+        <item>A-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>Unknown</item>
+
+    </string-array>
+
+    <string-array name="department">
+        <item>CSE</item>
+        <item>EEE</item>
+        <item>BBA</item>
+        <item>MBA</item>
+        <item>LLB</item>
+        <item>GED</item>
+    </string-array>
+
+</resources>
