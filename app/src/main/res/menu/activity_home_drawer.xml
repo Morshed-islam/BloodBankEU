@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/add_new_member"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Add New Member" />
+        <item
+            android:id="@+id/edit_profile"
+            android:icon="@drawable/ic_person"
+            android:title="Edit Profile" />
+        <item
+            android:id="@+id/blood_request"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Blood Request" />
+        <item
+            android:id="@+id/log_out"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Log out" />
+
+    </group>
+
+</menu>

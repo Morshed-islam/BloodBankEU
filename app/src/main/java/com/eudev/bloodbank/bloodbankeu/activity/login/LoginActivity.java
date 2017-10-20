@@ -1,9 +1,7 @@
 package com.eudev.bloodbank.bloodbankeu.activity.login;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -70,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Start the Register activity
-                Toast.makeText(getApplicationContext(), "valll", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), "valll", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intent);
 //                startActivityForResult(intent, REQUEST_SIGNUP);

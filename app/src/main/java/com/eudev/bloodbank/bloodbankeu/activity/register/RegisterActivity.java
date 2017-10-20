@@ -1,5 +1,6 @@
 package com.eudev.bloodbank.bloodbankeu.activity.register;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -28,11 +29,11 @@ import dmax.dialog.SpotsDialog;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private String TAG="signUp";
-    private EditText _nameText,_phoneText,_vasityIdText,_passwordText;
+    private String TAG = "signUp";
+    private EditText _nameText, _phoneText, _vasityIdText, _passwordText;
     private Button _signUpButton;
 
-    private Spinner _bloodGroup,_department;
+    private Spinner _bloodGroup, _department;
     private TextView _backToLogin;
 
     private FirebaseDatabase database;
@@ -50,9 +51,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         progressDialog = new SpotsDialog(this);
         init();
-        backToLogin();
-
-
 
 
         _signUpButton.setOnClickListener(new View.OnClickListener() {
@@ -62,47 +60,53 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        backToLogin();
+
     }
 
 
-    private void signUp(){
+    private void signUp() {
 
-        Log.i(TAG,"SignUP");
+        Log.i(TAG, "SignUP");
 
-        if (!validate()){
+        if (!validate()) {
             onLoginFailed();
             return;
         }
 
         progressDialog.show();
 
-        final String name = _nameText.getText().toString();
-        final String phone = _phoneText.getText().toString();
-        final String varsityId = _vasityIdText.getText().toString();
-        final String password = _passwordText.getText().toString();
-
-        final String bloodGroup = String.valueOf(_bloodGroup.getSelectedItem());
-        final String department = String.valueOf(_department.getSelectedItem());
-
 
         table_user.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("LongLogTag")
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                if (dataSnapshot.child(phone).exists()){
+                if (dataSnapshot.child(_phoneText.getText().toString()).exists()){
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "Phone number already Exists", Toast.LENGTH_SHORT).show();
+                    Log.i(TAG + "phone number Exists-", "if condition call in Signup Activity");
+                }
+                else
+                {
+                    String name = _nameText.getText().toString();
+                    String phone = _phoneText.getText().toString();
+                    String varsityId = _vasityIdText.getText().toString();
+                    String password = _passwordText.getText().toString();
+
+                    String bloodGroup = String.valueOf(_bloodGroup.getSelectedItem());
+                    String department = String.valueOf(_department.getSelectedItem());
+
 
                     progressDialog.dismiss();
-                    Toast.makeText(RegisterActivity.this, "Phone number already Exists", Toast.LENGTH_SHORT).show();
-
-                }else {
-                    progressDialog.dismiss();
-                    User user = new User(name,phone,varsityId,password,bloodGroup,department);
+                    Log.i(TAG + "phone number Exists-", "Else condition call in Signup Activity");
+                    User user = new User(name, phone, varsityId, password, bloodGroup, department);
                     table_user.child(phone).setValue(user);
                     Toast.makeText(RegisterActivity.this, "SignUp Successfully!!", Toast.LENGTH_SHORT).show();
                     finish();
-
-
                 }
+
+
 
             }
 
@@ -111,7 +115,6 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }
@@ -138,16 +141,16 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             _phoneText.setError(null);
         }
-        if (_nameText.getText().toString().isEmpty()){
+        if (_nameText.getText().toString().isEmpty()) {
             _nameText.setError("Enter your name");
             valid = false;
-        }else {
+        } else {
             _nameText.setError(null);
         }
-        if (_vasityIdText.getText().toString().isEmpty()){
+        if (_vasityIdText.getText().toString().isEmpty()) {
             _vasityIdText.setError("Enter valid ID");
             valid = false;
-        }else {
+        } else {
             _vasityIdText.setError(null);
         }
         if (_passwordText.getText().toString().isEmpty() || _passwordText.getText().toString().length() < 4 || _passwordText.getText().toString().length() > 10) {
@@ -157,16 +160,16 @@ public class RegisterActivity extends AppCompatActivity {
             _passwordText.setError(null);
         }
 
-        if (String.valueOf(_bloodGroup.getSelectedItem()).toString().isEmpty()){
+        if (String.valueOf(_bloodGroup.getSelectedItem()).toString().isEmpty()) {
             Toast.makeText(this, "Select Blood Group", Toast.LENGTH_SHORT).show();
             valid = false;
-        }else {
+        } else {
 
         }
-        if (String.valueOf(_department.getSelectedItem()).toString().isEmpty()){
+        if (String.valueOf(_department.getSelectedItem()).toString().isEmpty()) {
             Toast.makeText(this, "Select Department Group", Toast.LENGTH_SHORT).show();
             valid = false;
-        }else {
+        } else {
 
         }
 
@@ -174,7 +177,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void init(){
+    private void init() {
 
 
         _nameText = (EditText) findViewById(R.id.signup_input_name);
@@ -192,22 +195,17 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    private void backToLogin(){
+    private void backToLogin() {
 
         _backToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(),LoginActivity.class);
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(i);
                 finish();
             }
         });
     }
-
-
-
-
-
 
 
 }
