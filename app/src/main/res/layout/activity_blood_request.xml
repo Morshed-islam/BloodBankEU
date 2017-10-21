@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    android:background="@color/colorTextPrimary">
+    android:background="@drawable/whatsapp">
 
     <LinearLayout
         android:layout_width="match_parent"

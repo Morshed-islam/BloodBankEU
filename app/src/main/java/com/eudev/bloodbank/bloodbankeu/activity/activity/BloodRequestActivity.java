@@ -190,7 +190,7 @@ public class BloodRequestActivity extends AppCompatActivity implements
             _quantity.setError(null);
         }
         if (_patient_type.getText().toString().isEmpty()) {
-            _patient_type.setError("Requires!!");
+            _patient_type.setError("Required!!");
             valid = false;
         } else {
             _patient_type.setError(null);

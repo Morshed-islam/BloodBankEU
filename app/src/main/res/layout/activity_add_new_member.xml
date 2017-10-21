@@ -28,7 +28,7 @@
             android:layout_marginTop="5dp">
 
             <EditText
-                android:id="@+id/signup_input_name"
+                android:id="@+id/new_member_input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
@@ -43,7 +43,7 @@
             android:layout_marginTop="5dp">
 
             <EditText
-                android:id="@+id/signup_input_phone"
+                android:id="@+id/new_member_input_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone number"
@@ -59,27 +59,13 @@
             android:layout_marginTop="5dp">
 
             <EditText
-                android:id="@+id/signup_input_id"
+                android:id="@+id/new_member_input_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Varsity ID num"
                 />
         </android.support.design.widget.TextInputLayout>
 
-        <!-- Password Label -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
-
-            <EditText
-                android:id="@+id/signup_input_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword" />
-        </android.support.design.widget.TextInputLayout>
 
 
         <LinearLayout
@@ -105,7 +91,7 @@
 
 
                 <Spinner
-                    android:id="@+id/signup_bloodgroup"
+                    android:id="@+id/new_member_bloodgroup"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -130,7 +116,7 @@
 
 
                 <Spinner
-                    android:id="@+id/signup_department"
+                    android:id="@+id/new_member_department"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -144,26 +130,17 @@
 
         <!-- Signup Button -->
         <info.hoang8f.widget.FButton
-            android:id="@+id/btn_signUp"
+            android:id="@+id/new_member_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Sign Up"
+            android:text="Add New member"
             android:textColor="#fff"
             android:layout_marginBottom="20dp"
             app:buttonColor="@color/fbutton_default_shadow_color"
             app:cornerRadius="4dp" />
 
 
-
-        <TextView
-            android:id="@+id/link_login"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:gravity="center"
-            android:text="Already a member? Login"
-            android:textSize="16dip" />
 
     </LinearLayout>
 </ScrollView>

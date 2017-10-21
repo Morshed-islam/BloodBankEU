@@ -39,6 +39,7 @@ public class AllDonarFragment extends Fragment {
     private RecyclerView recycler_user;
     private LinearLayoutManager layoutManager;
     FirebaseRecyclerAdapter<User, UserListViewHolder> adapter;
+    FirebaseRecyclerAdapter<User, UserListViewHolder> mAdapter;
 
     public AllDonarFragment() {
         // Required empty public constructor
@@ -124,6 +125,8 @@ public class AllDonarFragment extends Fragment {
         recycler_user.setAdapter(adapter);
 
     }
+
+
 
    /* private void retriveAllData() {
 

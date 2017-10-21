@@ -28,7 +28,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.activity.UserDetailsActivity" />
         <activity android:name=".activity.activity.BloodRequestActivity" />
-        <activity android:name=".activity.activity.SearchActivity"></activity>
+        <activity android:name=".activity.activity.SearchActivity" />
+        <activity android:name=".activity.activity.AddNewMemberActivity"></activity>
     </application>
 
 </manifest>

@@ -20,6 +20,14 @@ public class User {
         this.department = department;
     }
 
+    public User(String name, String phone, String varsity_id, String blood_group, String department) {
+        this.name = name;
+        this.phone = phone;
+        this.varsity_id = varsity_id;
+        this.blood_group = blood_group;
+        this.department = department;
+    }
+
     public String getName() {
         return name;
     }

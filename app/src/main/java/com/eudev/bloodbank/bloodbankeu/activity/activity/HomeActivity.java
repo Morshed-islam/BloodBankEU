@@ -24,6 +24,7 @@ import com.eudev.bloodbank.bloodbankeu.activity.fragment.BloodRequestFragment;
 import com.eudev.bloodbank.bloodbankeu.activity.fragment.DepartmentFragment;
 import com.eudev.bloodbank.bloodbankeu.activity.fragment.ReadyDonarFragment;
 import com.eudev.bloodbank.bloodbankeu.activity.login.LoginActivity;
+import com.eudev.bloodbank.bloodbankeu.activity.model.BloodRequest;
 import com.eudev.bloodbank.bloodbankeu.activity.model.Common;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -185,9 +186,14 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.add_new_member) {
 
+            startActivity(new Intent(getApplicationContext(),AddNewMemberActivity.class));
+
         } else if (id == R.id.edit_profile) {
 
-        } else if (id == R.id.log_out) {
+        } else if (id == R.id.blood_request){
+            startActivity(new Intent(getApplicationContext(), BloodRequestActivity.class));
+
+        }else if (id == R.id.log_out) {
             Intent signIn = new Intent(getApplicationContext(), LoginActivity.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(signIn);
