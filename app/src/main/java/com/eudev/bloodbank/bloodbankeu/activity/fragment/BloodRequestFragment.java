@@ -62,7 +62,7 @@ public class BloodRequestFragment extends Fragment {
 
         //init firebase
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Blood_Request");
+        ref = database.getReference().child("Blood_Request");
 
         View view =inflater.inflate(R.layout.fragment_blood_request, container, false);
 
@@ -91,7 +91,12 @@ public class BloodRequestFragment extends Fragment {
 
     private void retriveAllBloodRequest() {
 
-        adapter = new FirebaseRecyclerAdapter<BloodRequest, BloodRequestViewHolder>(BloodRequest.class,R.layout.blood_request_custom_design,BloodRequestViewHolder.class,ref.orderByChild("blood_group")) {
+        adapter = new FirebaseRecyclerAdapter<BloodRequest,
+                BloodRequestViewHolder>(BloodRequest.class,
+                R.layout.blood_request_custom_design,
+                BloodRequestViewHolder.class,
+                ref.orderByChild("blood_group")) {
+
             @Override
             protected void populateViewHolder(BloodRequestViewHolder viewHolder, final BloodRequest model, final int position) {
 
@@ -123,11 +128,11 @@ public class BloodRequestFragment extends Fragment {
 
 
                         //Toast.makeText(HomeActivity.this, ""+clickItem.getName(), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getContext(), UserDetailsActivity.class);
-                        intent.putExtra("userId", adapter.getRef(pos).getKey());
-
-                        Log.i("morshed", "Click item Key:--"+adapter.getRef(pos).getKey());
-                        startActivity(intent);
+//                        Intent intent = new Intent(getContext(), UserDetailsActivity.class);
+//                        intent.putExtra("userId", adapter.getRef(pos).getKey());
+//
+//                        Log.i("morshed", "Click item Key:--"+adapter.getRef(pos).getKey());
+//                        startActivity(intent);
 
 
                     }

@@ -29,9 +29,9 @@ import com.google.firebase.database.ValueEventListener;
 public class ReadyDonarFragment extends Fragment {
 
 
-    private FirebaseDatabase database;
-    private DatabaseReference table_user_ready;
-    private DatabaseReference table_user;
+//    private FirebaseDatabase database;
+//    private DatabaseReference table_user_ready;
+//    private DatabaseReference table_user;
 
 
     public ReadyDonarFragment() {
@@ -52,16 +52,16 @@ public class ReadyDonarFragment extends Fragment {
 
 
         //init firebase
-        database = FirebaseDatabase.getInstance();
-        table_user_ready = database.getReference("User_Ready/phone");
-        table_user = database.getReference("User");
+//        database = FirebaseDatabase.getInstance();
+//        table_user_ready = database.getReference("User_Ready");
+//        table_user = database.getReference("User");
 
         View view = inflater.inflate(R.layout.fragment_ready_donar, container, false);
 
 
-        String blood = Common.currentUser.getBlood_group();
+       //String blood = Common.currentUser.getBlood_group();
 
-        checkIFUserIsReady(blood);
+        checkIFUserIsReady();
 
 
         // Inflate the layout for this fragment
@@ -69,25 +69,39 @@ public class ReadyDonarFragment extends Fragment {
     }
 
 
-    private void checkIFUserIsReady(final String blood) {
-
-       table_user.addValueEventListener(new ValueEventListener() {
-           @Override
-           public void onDataChange(DataSnapshot dataSnapshot) {
-
-               if (dataSnapshot.child(blood.toString()).equals("A+"));
+    private void checkIFUserIsReady() {
 
 
 
-               Toast.makeText(getContext(), "yes", Toast.LENGTH_SHORT).show();
+        DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
+        Query query = mFirebaseDatabaseReference.child("User").orderByChild("blood_group").equalTo("A+");
 
-           }
 
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
+        ValueEventListener valueEventListener = new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren())
+                {
+                    //TODO get the data here
 
-           }
-       });
+                    System.out.println(postSnapshot.toString()+"\n");
+                    Log.i("morshed",postSnapshot.toString());
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+
+            }
+        };
+        query.addValueEventListener(valueEventListener);
+
 
     }
 }

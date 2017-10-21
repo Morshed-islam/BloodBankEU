@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="com.eudev.bloodbank.bloodbankeu.activity.activity.SearchActivity">
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search Your Donor"
+        android:gravity="center_horizontal"
+        android:textSize="22sp"
+
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        >
+
+
+        <Spinner
+            android:id="@+id/search_blood_group"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:entries="@array/blood_group"
+            android:prompt="@string/blood_prompt"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_marginBottom="5dp"
+            />
+
+        <Spinner
+            android:id="@+id/search_department"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:entries="@array/department"
+            android:prompt="@string/department_prompt"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="center"
+            android:layout_marginBottom="5dp"
+            />
+
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/search_donor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:padding="10dp"
+            android:layout_marginBottom="5dp"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

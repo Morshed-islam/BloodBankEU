@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity
     BloodRequestFragment bloodRequestFragment;
     DepartmentFragment departmentFragment;
 
-    String[] tabTitle={"All Donar","Ready Donar","Blood Request","Department"};
+    String[] tabTitle={"All Donor","Ready Donor","Blood Request","Department"};
 
 
 
@@ -170,6 +170,7 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }else if (id == R.id.action_search) {
+            startActivity(new Intent(getApplicationContext(),SearchActivity.class));
             return true;
         }
 
@@ -211,8 +212,8 @@ public class HomeActivity extends AppCompatActivity
         readyDonarFragment = new ReadyDonarFragment();
         bloodRequestFragment = new BloodRequestFragment();
         departmentFragment = new DepartmentFragment();
-        adapter.addFragment(allDonarFragment,"All Donar");
-        adapter.addFragment(readyDonarFragment,"Ready Donar");
+        adapter.addFragment(allDonarFragment,"All Donor");
+        adapter.addFragment(readyDonarFragment,"Ready Donor");
         adapter.addFragment(bloodRequestFragment,"Blood Request");
         adapter.addFragment(departmentFragment,"Department");
         viewPager.setAdapter(adapter);
@@ -255,7 +256,7 @@ public class HomeActivity extends AppCompatActivity
                 long size = dataSnapshot.getChildrenCount();
                 unreadCount[1] = 0;
                 unreadCount[2] = size;
-                unreadCount[3] = 0;
+               // unreadCount[3] = 0;
                 tv_count.setText(""+unreadCount[pos]);
             }
 
