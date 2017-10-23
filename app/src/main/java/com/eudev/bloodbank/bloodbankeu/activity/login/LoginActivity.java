@@ -120,7 +120,12 @@ public class LoginActivity extends AppCompatActivity {
 
                         progressDialog.dismiss();
                         Log.i(TAG + "onDataChange  inside else statement ---", "" + user);
-                        Toast.makeText(getApplicationContext(), "Wrong Pass", Toast.LENGTH_SHORT).show();
+
+                        if (!user.getPassword().equals(password)){
+                            Toast.makeText(getApplicationContext(), "Try Again", Toast.LENGTH_SHORT).show();
+                        }
+
+
                     }
                 } else {
                     progressDialog.dismiss();

@@ -3,6 +3,17 @@
 
     <string name="blood_prompt">Choose Blood Group</string>
     <string name="department_prompt">Choose Department</string>
+    <string name="ready_donor_prompt">Are you ready?</string>
+
+
+    <string-array name="ready_donor">
+
+        <item></item>
+        <item>Yes</item>
+        <item>No</item>
+
+    </string-array>
+
 
     <string-array name="blood_group">
         <item></item>

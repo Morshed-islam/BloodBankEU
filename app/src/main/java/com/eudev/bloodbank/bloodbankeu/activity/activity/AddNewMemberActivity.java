@@ -150,14 +150,11 @@ public class AddNewMemberActivity extends AppCompatActivity {
         } else {
             _phone.setError(null);
         }
-        if (String.valueOf(_blood_group.getSelectedItem()).toString().isEmpty()) {
-            Toast.makeText(this, "Plz select Blood! ", Toast.LENGTH_SHORT).show();
+        if (String.valueOf(_blood_group.getSelectedItem()).toString().isEmpty() && String.valueOf(_department.getSelectedItem()).toString().isEmpty()) {
+            Toast.makeText(this, "Plz select Blood! & Department ", Toast.LENGTH_SHORT).show();
             valid = false;
         }
-        if (String.valueOf(_department.getSelectedItem()).toString().isEmpty()) {
-            Toast.makeText(this, "Plz Select department!", Toast.LENGTH_SHORT).show();
-            valid = false;
-        }
+
 
         return valid;
 

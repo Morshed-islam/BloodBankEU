@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -30,6 +31,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity
@@ -39,6 +41,7 @@ public class HomeActivity extends AppCompatActivity
     private FirebaseDatabase database;
     private DatabaseReference ref;
     private DatabaseReference bloodCountTable;
+    private DatabaseReference readyDonorCount;
 
     //Header Title
     private TextView headerName,headerBloodGroup,headerPhoneNum;
@@ -75,6 +78,7 @@ public class HomeActivity extends AppCompatActivity
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("User");
         bloodCountTable = database.getReference("Blood_Request");
+        readyDonorCount = database.getReference("User");
 
         //Initializing viewPager
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -190,6 +194,8 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.edit_profile) {
 
+            startActivity(new Intent(getApplicationContext(),EditProfileActivity.class));
+
         } else if (id == R.id.blood_request){
             startActivity(new Intent(getApplicationContext(), BloodRequestActivity.class));
 
@@ -260,9 +266,35 @@ public class HomeActivity extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 long size = dataSnapshot.getChildrenCount();
-                unreadCount[1] = 0;
+               // unreadCount[1] = 0;
                 unreadCount[2] = size;
                // unreadCount[3] = 0;
+                tv_count.setText(""+unreadCount[pos]);
+
+                Log.i("morshed","blood size: "+size);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        DatabaseReference mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
+        Query query = mFirebaseDatabaseReference.child("User").orderByChild("ready").equalTo("Yes");
+
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                long size = dataSnapshot.getChildrenCount();
+
+                Log.i("morshed","size is: "+size);
+
+                unreadCount[1] = size;
+                //unreadCount[2] = size;
+                // unreadCount[3] = 0;
                 tv_count.setText(""+unreadCount[pos]);
             }
 

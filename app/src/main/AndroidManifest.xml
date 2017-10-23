@@ -29,7 +29,8 @@
         <activity android:name=".activity.activity.UserDetailsActivity" />
         <activity android:name=".activity.activity.BloodRequestActivity" />
         <activity android:name=".activity.activity.SearchActivity" />
-        <activity android:name=".activity.activity.AddNewMemberActivity"></activity>
+        <activity android:name=".activity.activity.AddNewMemberActivity" />
+        <activity android:name=".activity.activity.EditProfileActivity"></activity>
     </application>
 
 </manifest>
