@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.eudev.bloodbank.bloodbankeu.R;
 import com.eudev.bloodbank.bloodbankeu.activity.model.BloodRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,9 +49,15 @@ public class BloodRequestActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_request);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Blood Request");
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
        //init fireBase database
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Blood_Request");
+
 
 
 
@@ -203,22 +211,27 @@ public class BloodRequestActivity extends AppCompatActivity implements
             _hospital_name.setError(null);
         }
         if (_area.getText().toString().isEmpty()) {
-            _area.setError("between 4 and 10 alphanumeric characters");
+            _area.setError("Required!");
             valid = false;
         } else {
             _area.setError(null);
+        }if (_contact_no.getText().toString().isEmpty()) {
+            _contact_no.setError("Required!");
+            valid = false;
+        } else {
+            _contact_no.setError(null);
         }
 
         if (String.valueOf(_blood_group.getSelectedItem()).toString().isEmpty()) {
             Toast.makeText(this, "Select Blood Group", Toast.LENGTH_SHORT).show();
             valid = false;
         }if (datePicker.getText().toString().isEmpty()) {
-            datePicker.setError("between 4 and 10 alphanumeric characters");
+            datePicker.setError("Required!");
             valid = false;
         } else {
             datePicker.setError(null);
         }if (timePicker.getText().toString().isEmpty()) {
-            timePicker.setError("between 4 and 10 alphanumeric characters");
+            timePicker.setError("Required!");
             valid = false;
         } else {
             timePicker.setError(null);

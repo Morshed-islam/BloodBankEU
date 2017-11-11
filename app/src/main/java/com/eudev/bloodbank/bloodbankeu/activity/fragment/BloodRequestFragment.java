@@ -113,7 +113,7 @@ public class BloodRequestFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
 
-                        Toast.makeText(getContext(), ""+position, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getContext(), ""+position, Toast.LENGTH_SHORT).show();
                         Intent dialintnt = new Intent(Intent.ACTION_CALL, Uri.parse(("tel:" +model.getContact_no())));
                         startActivity(dialintnt);
                     }

@@ -1,11 +1,15 @@
 package com.eudev.bloodbank.bloodbankeu.activity.activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -39,6 +43,12 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Search Donor");
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Firebase init
         database = FirebaseDatabase.getInstance();
         ref = database.getReference().child("User");
@@ -57,27 +67,23 @@ public class SearchActivity extends AppCompatActivity {
         recycler_view.setLayoutManager(layoutManager);
 
 
-
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-              //  String department = String.valueOf(searchDept.getSelectedItem());
+                //  String department = String.valueOf(searchDept.getSelectedItem());
                 String blood = String.valueOf(searchBlood.getSelectedItem());
 
-                if (!blood.isEmpty()){
+                if (!blood.isEmpty()) {
                     filteringBydptAndBlood(blood);
 
-                }else {
-                    Toast.makeText(getApplicationContext(), "Please Select Department!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please Select Blood Group!", Toast.LENGTH_SHORT).show();
                 }
 
 
             }
         });
-
-
-
 
 
     }
@@ -86,7 +92,6 @@ public class SearchActivity extends AppCompatActivity {
 
 
         Query query = ref.orderByChild("blood_group").equalTo(blood);
-
 
 
         adapter = new FirebaseRecyclerAdapter<User, UserListViewHolder>(
@@ -108,8 +113,18 @@ public class SearchActivity extends AppCompatActivity {
                     public void onClick(View view) {
 
 //
-                    //    Toast.makeText(getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();
-                        Intent dialintnt = new Intent(Intent.ACTION_CALL, Uri.parse(("tel:" +model.getPhone())));
+                        //    Toast.makeText(getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();
+                        Intent dialintnt = new Intent(Intent.ACTION_CALL, Uri.parse(("tel:" + model.getPhone())));
+                        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            // TODO: Consider calling
+                            //    ActivityCompat#requestPermissions
+                            // here to request the missing permissions, and then overriding
+                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                            //                                          int[] grantResults)
+                            // to handle the case where the user grants the permission. See the documentation
+                            // for ActivityCompat#requestPermissions for more details.
+                            return;
+                        }
                         startActivity(dialintnt);
 
                     }

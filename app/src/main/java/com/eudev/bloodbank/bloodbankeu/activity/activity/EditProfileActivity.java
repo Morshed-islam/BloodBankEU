@@ -1,7 +1,10 @@
 package com.eudev.bloodbank.bloodbankeu.activity.activity;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +15,9 @@ import android.widget.Toast;
 import com.eudev.bloodbank.bloodbankeu.R;
 import com.eudev.bloodbank.bloodbankeu.activity.model.Common;
 import com.eudev.bloodbank.bloodbankeu.activity.model.User;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import dmax.dialog.SpotsDialog;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -30,17 +38,30 @@ public class EditProfileActivity extends AppCompatActivity {
     private Button _update_btn;
 
     private DatabaseReference user_table;
+    private android.app.AlertDialog proAlertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Edit Profile");
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //init firebase
         user_table = FirebaseDatabase.getInstance().getReference().child("User");
 
         //init all instant
         init();
+
+        //alert
+        proAlertDialog = new SpotsDialog(this);
+
+
+
 
         //data retrive to set value in all edittext
         retriveDataToSetExistingValue();
@@ -49,6 +70,7 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                proAlertDialog.show();
                 String name = _update_name.getText().toString();
                 String phone = _update_phone.getText().toString();
                 String varsityId = _update_varsity_id.getText().toString();
@@ -59,19 +81,28 @@ public class EditProfileActivity extends AppCompatActivity {
                 String ready = String.valueOf(_update_ready.getSelectedItem());
 
 
-                if (bloodGroup.isEmpty() && department.isEmpty() && ready.isEmpty()) {
-                    Toast.makeText(EditProfileActivity.this, "Plz select blood group,department & Ready", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+//
+                if (!validate()) {
+                    proAlertDialog.dismiss();
+                    return;
 
                 } else {
 
                     updateCurrentUser(name, phone, varsityId, password, bloodGroup, department, ready);
                     Toast.makeText(EditProfileActivity.this, "Update Successfully!", Toast.LENGTH_SHORT).show();
                     finish();
+                    proAlertDialog.dismiss();
                 }
-
 
             }
         });
+
+
 
 
     }
@@ -87,6 +118,7 @@ public class EditProfileActivity extends AppCompatActivity {
 //        childUpdates.put("/user-posts/" + userId + "/" + key, postValues);
 //
 //        mDatabase.updateChildren(childUpdates);
+
 
 
         String key = Common.currentUser.getPhone();
@@ -105,6 +137,48 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
 
+    private boolean validate() {
+
+        boolean valid = true;
+
+        if (_update_name.getText().toString().isEmpty()) {
+            _update_name.setError("Required!!");
+            valid = false;
+        } else {
+            _update_name.setError(null);
+        }
+        if (_update_phone.getText().toString().isEmpty()) {
+            _update_phone.setError("Required!!");
+            valid = false;
+        } else {
+            _update_phone.setError(null);
+        }
+        if (_update_varsity_id.getText().toString().isEmpty()) {
+            _update_varsity_id.setError("Required!!");
+            valid = false;
+        } else {
+            _update_varsity_id.setError(null);
+        }
+        if (String.valueOf(_update_blood_group.getSelectedItem()).toString().isEmpty()
+                && String.valueOf(_update_department.getSelectedItem()).toString().isEmpty()
+                && String.valueOf(_update_ready.getSelectedItem()).toString().isEmpty()) {
+            Toast.makeText(this, "Plz select Blood!,Department & Ready Donor ", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+        if(_update_password.getText().toString().isEmpty() || _update_password.getText().toString().length() < 4 || _update_password.getText().toString().length() > 10){
+            _update_password.setError("between 4 and 10 alphanumeric characters");
+            valid = false;
+        }else {
+
+            _update_password.setError(null);
+        }
+
+
+        return valid;
+
+    }
+
+
     private void retriveDataToSetExistingValue() {
 
         String UID = Common.currentUser.getPhone();
@@ -119,6 +193,14 @@ public class EditProfileActivity extends AppCompatActivity {
                 _update_password.setText(user.getPassword());
                 _update_varsity_id.setText(user.getVarsity_id());
 
+                setSpinText(_update_blood_group,user.getBlood_group());
+                setSpinText(_update_department,user.getDepartment());
+                setSpinText(_update_ready,user.getReady());
+
+              //  String dptArray[] = getResources().getStringArray(R.array.department);
+
+
+
             }
 
             @Override
@@ -127,6 +209,17 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+    public void setSpinText(Spinner spin, String text)
+    {
+        for(int i= 0; i < spin.getAdapter().getCount(); i++)
+        {
+            if(spin.getAdapter().getItem(i).toString().contains(text))
+            {
+                spin.setSelection(i);
+            }
+        }
 
     }
 
@@ -143,6 +236,9 @@ public class EditProfileActivity extends AppCompatActivity {
         _update_btn = (Button) findViewById(R.id.update_btn);
 
     }
+
+
+
 }
 
 

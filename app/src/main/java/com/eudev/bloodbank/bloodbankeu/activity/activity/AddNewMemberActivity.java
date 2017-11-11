@@ -3,6 +3,7 @@ package com.eudev.bloodbank.bloodbankeu.activity.activity;
 import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,7 @@ import dmax.dialog.SpotsDialog;
 public class AddNewMemberActivity extends AppCompatActivity {
 
     private EditText _name, _phone, _id;
-    private Spinner _department, _blood_group;
+    private Spinner _department, _blood_group,_ready_donor;
 
     private Button _addBtn;
 
@@ -37,6 +38,12 @@ public class AddNewMemberActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_member);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Add New Member");
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //init fireBase database
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
@@ -91,11 +98,12 @@ public class AddNewMemberActivity extends AppCompatActivity {
 
                     String blood = String.valueOf(_blood_group.getSelectedItem());
                     String department = String.valueOf(_department.getSelectedItem());
+                    String ready = String.valueOf(_ready_donor.getSelectedItem());
 
 
                     progressDialog.dismiss();
                     Log.i("morshed", "Else condition call in Signup Activity");
-                    User user = new User(name, phone,id,blood,department);
+                    User user = new User(name, phone,id,blood,department,ready);
                     mDatabase.child(phone).setValue(user);
                     Toast.makeText(getApplicationContext(), "Added Successfully!!", Toast.LENGTH_SHORT).show();
                     finish();
@@ -103,6 +111,8 @@ public class AddNewMemberActivity extends AppCompatActivity {
 
 
             }
+
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -122,6 +132,7 @@ public class AddNewMemberActivity extends AppCompatActivity {
 
         _blood_group = (Spinner) findViewById(R.id.new_member_bloodgroup);
         _department = (Spinner) findViewById(R.id.new_member_department);
+        _ready_donor = (Spinner) findViewById(R.id.new_member_ready);
 
 
         _addBtn = (Button) findViewById(R.id.new_member_btn);
@@ -150,8 +161,10 @@ public class AddNewMemberActivity extends AppCompatActivity {
         } else {
             _phone.setError(null);
         }
-        if (String.valueOf(_blood_group.getSelectedItem()).toString().isEmpty() && String.valueOf(_department.getSelectedItem()).toString().isEmpty()) {
-            Toast.makeText(this, "Plz select Blood! & Department ", Toast.LENGTH_SHORT).show();
+        if (String.valueOf(_blood_group.getSelectedItem()).toString().isEmpty()
+                && String.valueOf(_department.getSelectedItem()).toString().isEmpty()
+                && String.valueOf(_ready_donor.getSelectedItem()).toString().isEmpty()) {
+            Toast.makeText(this, "Plz select Blood!,Department & Ready Donor ", Toast.LENGTH_SHORT).show();
             valid = false;
         }
 

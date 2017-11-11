@@ -81,6 +81,9 @@ public class DepartmentFragment extends Fragment {
 
 
 
+        //For first time show the data without action
+        departmentSpinner.setSelection(1);
+        retrivedManupulateData("CSE");
         departmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,7 +131,7 @@ public class DepartmentFragment extends Fragment {
                     public void onClick(View view) {
 
 
-                        Toast.makeText(getContext(), ""+position, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(), ""+position, Toast.LENGTH_SHORT).show();
                         Intent dialintnt = new Intent(Intent.ACTION_CALL, Uri.parse(("tel:" +model.getPhone())));
                         startActivity(dialintnt);
 

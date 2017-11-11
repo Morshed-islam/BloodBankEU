@@ -160,14 +160,9 @@ public class RegisterActivity extends AppCompatActivity {
             _passwordText.setError(null);
         }
 
-        if (String.valueOf(_bloodGroup.getSelectedItem()).toString().isEmpty()) {
-            Toast.makeText(this, "Select Blood Group", Toast.LENGTH_SHORT).show();
-            valid = false;
-        } else {
-
-        }
-        if (String.valueOf(_department.getSelectedItem()).toString().isEmpty()) {
-            Toast.makeText(this, "Select Department Group", Toast.LENGTH_SHORT).show();
+        if (String.valueOf(_bloodGroup.getSelectedItem()).toString().isEmpty()
+                && String.valueOf(_department.getSelectedItem()).toString().isEmpty()) {
+            Toast.makeText(this, "Select Blood Group & Department", Toast.LENGTH_SHORT).show();
             valid = false;
         } else {
 
