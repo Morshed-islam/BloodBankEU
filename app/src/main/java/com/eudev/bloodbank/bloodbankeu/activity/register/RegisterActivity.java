@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.eudev.bloodbank.bloodbankeu.R;
 import com.eudev.bloodbank.bloodbankeu.activity.login.LoginActivity;
 import com.eudev.bloodbank.bloodbankeu.activity.model.User;
+import com.eudev.bloodbank.bloodbankeu.activity.sharedpreference.MySharedPreference;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,15 +40,20 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference table_user;
     private android.app.AlertDialog progressDialog;
+    private MySharedPreference preference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+
+        //firebase init
         database = FirebaseDatabase.getInstance();
         table_user = database.getReference("User");
 
+        //Shared Preferences Init
+        preference= MySharedPreference.getPreferences(getApplicationContext());
 
         progressDialog = new SpotsDialog(this);
         init();
@@ -103,7 +109,11 @@ public class RegisterActivity extends AppCompatActivity {
                     User user = new User(name, phone, varsityId, password, bloodGroup, department);
                     table_user.child(phone).setValue(user);
                     Toast.makeText(RegisterActivity.this, "SignUp Successfully!!", Toast.LENGTH_SHORT).show();
+
+
                     finish();
+//                    preference.setUserPhoneNumber(phone);
+//                    preference.setPassword(password);
                 }
 
 

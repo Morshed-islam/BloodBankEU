@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone"
-                android:text="01723505080"
+                android:text=""
                 android:focusable="true"
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
-                android:text="1234"
+                android:text=""
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
 

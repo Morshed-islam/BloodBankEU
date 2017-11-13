@@ -4,21 +4,25 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/add_new_member"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/addmember"
             android:title="Add New Member" />
         <item
             android:id="@+id/edit_profile"
-            android:icon="@drawable/ic_person"
+            android:icon="@drawable/profile"
             android:title="Edit Profile" />
         <item
             android:id="@+id/blood_request"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/request"
             android:title="Blood Request" />
         <item
             android:id="@+id/log_out"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/signout"
             android:title="Log out" />
 
+        <item
+            android:id="@+id/developer"
+            android:icon="@drawable/developer"
+            android:title="Developer" />
     </group>
 
 </menu>

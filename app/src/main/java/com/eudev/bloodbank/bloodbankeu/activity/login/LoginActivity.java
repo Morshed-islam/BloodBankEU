@@ -16,6 +16,7 @@ import com.eudev.bloodbank.bloodbankeu.activity.activity.HomeActivity;
 import com.eudev.bloodbank.bloodbankeu.activity.model.Common;
 import com.eudev.bloodbank.bloodbankeu.activity.model.User;
 import com.eudev.bloodbank.bloodbankeu.activity.register.RegisterActivity;
+import com.eudev.bloodbank.bloodbankeu.activity.sharedpreference.MySharedPreference;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference table_user;
     //AlertDialog progressDialog;
     android.app.AlertDialog progressDialog;
+    MySharedPreference preference;
 
 
     @Override
@@ -49,9 +51,21 @@ public class LoginActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         table_user = database.getReference("User");
 
+        //Shared Preferences
+        preference = MySharedPreference.getPreferences(getApplicationContext());
+
+
         progressDialog = new SpotsDialog(this);
 
         init();
+
+
+        //retrive preferences data
+        String phone = preference.getUserPhoneNumber();
+        String pass = preference.getPassword();
+
+        _phoneText.setText(phone);
+        _passwordText.setText(pass);
 
         //----------------Login Access---------------
         _loginButton.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +83,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Start the Register activity
                // Toast.makeText(getApplicationContext(), "valll", Toast.LENGTH_SHORT).show();
+
+
+
                 Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intent);
 //                startActivityForResult(intent, REQUEST_SIGNUP);
@@ -94,7 +111,14 @@ public class LoginActivity extends AppCompatActivity {
         final String phone = _phoneText.getText().toString();
         final String password = _passwordText.getText().toString();
 
+        preference.setUserPhoneNumber(phone);
+        preference.setPassword(password);
+
+        System.out.println(preference.getUserPhoneNumber());
+
         // TODO: Implement your own authentication logic here.
+
+
 
         table_user.addValueEventListener(new ValueEventListener() {
             @SuppressLint("LongLogTag")
