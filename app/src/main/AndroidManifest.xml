@@ -31,16 +31,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.activity.BloodRequestActivity" />
-
         </activity>
         <activity android:name=".activity.activity.SearchActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.activity.SearchActivity" />
-
-        </activity>>
+        </activity>
+        >
         <activity android:name=".activity.activity.AddNewMemberActivity">
-
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.activity.AddNewMemberActivity" />
@@ -49,8 +47,8 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.activity.EditProfileActivity" />
-
         </activity>
+        <activity android:name=".activity.activity.DeveloperActivity"></activity>
     </application>
 
 </manifest>

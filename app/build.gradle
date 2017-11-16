@@ -40,6 +40,7 @@ dependencies {
     //Diagonal Layout
 
     //compile 'com.wdullaer:materialdatetimepicker:3.3.1'
+    //noinspection GradleCompatible
     compile 'com.google.firebase:firebase-messaging:10.2.0'
     compile 'com.firebaseui:firebase-ui-database:1.2.0'
     compile 'com.google.firebase:firebase-core:10.2.0'
@@ -59,5 +60,6 @@ dependencies {
     compile 'it.neokree:MaterialTabs:0.11'
     compile 'com.google.android.gms:play-services-ads:10.2.0'
     testCompile 'junit:junit:4.12'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
 }
 apply plugin: 'com.google.gms.google-services'

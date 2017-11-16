@@ -64,7 +64,7 @@ public class BloodRequestFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference().child("Blood_Request");
 
-        View view =inflater.inflate(R.layout.fragment_blood_request, container, false);
+        View view = inflater.inflate(R.layout.fragment_blood_request, container, false);
 
 
         recycler_view = (RecyclerView) view.findViewById(R.id.recycler_blood_request);
@@ -80,7 +80,7 @@ public class BloodRequestFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent blood_request = new Intent(getContext(),BloodRequestActivity.class);
+                Intent blood_request = new Intent(getContext(), BloodRequestActivity.class);
 //                blood_request.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(blood_request);
             }
@@ -95,26 +95,26 @@ public class BloodRequestFragment extends Fragment {
                 BloodRequestViewHolder>(BloodRequest.class,
                 R.layout.blood_request_custom_design,
                 BloodRequestViewHolder.class,
-                ref.orderByChild("blood_group")) {
+                ref.orderByChild("date")) {
 
             @Override
             protected void populateViewHolder(BloodRequestViewHolder viewHolder, final BloodRequest model, final int position) {
 
                 viewHolder.allDetails.setText(model.getQuantity()
-                        +" Bag "+model.getBlood_group()
-                        +" blood is required for a "
-                        +model.getPatient_type()+" patient at "
-                        +model.getDate()+","+model.getTime()+" in "
-                        +model.getHospital_name()+" Hospital.");
+                        + " Bag " + model.getBlood_group()
+                        + " blood is required for a "
+                        + model.getPatient_type() + " patient at "
+                        + model.getDate() + "," + model.getTime() + " in "
+                        + model.getHospital_name() + " Hospital.");
 
-                viewHolder.phone.setText("Contact With: \n"+model.getContact_no());
+                viewHolder.phone.setText("Contact With: \n" + model.getContact_no());
 
                 viewHolder.call.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
-                       // Toast.makeText(getContext(), ""+position, Toast.LENGTH_SHORT).show();
-                        Intent dialintnt = new Intent(Intent.ACTION_CALL, Uri.parse(("tel:" +model.getContact_no())));
+                        // Toast.makeText(getContext(), ""+position, Toast.LENGTH_SHORT).show();
+                        Intent dialintnt = new Intent(Intent.ACTION_CALL, Uri.parse(("tel:" + model.getContact_no())));
                         startActivity(dialintnt);
                     }
                 });
@@ -125,6 +125,10 @@ public class BloodRequestFragment extends Fragment {
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int pos, boolean isLongPress) {
+
+
+
+
 
 
                         //Toast.makeText(HomeActivity.this, ""+clickItem.getName(), Toast.LENGTH_SHORT).show();

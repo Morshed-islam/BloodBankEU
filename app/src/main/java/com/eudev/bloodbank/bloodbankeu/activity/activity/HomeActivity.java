@@ -42,6 +42,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static java.security.AccessController.getContext;
 
 public class HomeActivity extends AppCompatActivity
@@ -56,6 +58,7 @@ public class HomeActivity extends AppCompatActivity
 
     //Header Title
     private TextView headerName,headerBloodGroup,headerPhoneNum;
+    private CircleImageView headerImg;
 
     //This is our tablayout
     private TabLayout tabLayout;
@@ -170,14 +173,22 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         View headerView = navigationView.getHeaderView(0);
+        
         headerName= (TextView) headerView.findViewById(R.id.header_name);
+        headerImg = (CircleImageView) headerView.findViewById(R.id.nav_profile_image);
         headerBloodGroup= (TextView) headerView.findViewById(R.id.header_blood_group);
         headerPhoneNum= (TextView) headerView.findViewById(R.id.header_phone_num);
         headerName.setText(Common.currentUser.getName());
         headerBloodGroup.setText(Common.currentUser.getBlood_group());
         headerPhoneNum.setText(Common.currentUser.getPhone());
+        headerImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(HomeActivity.this, "Coming Soon!! ", Toast.LENGTH_SHORT).show();
+            }
+    });
 
-    }
+}
 
     @Override
     public void onBackPressed() {
@@ -242,6 +253,9 @@ public class HomeActivity extends AppCompatActivity
             Intent signIn = new Intent(getApplicationContext(), LoginActivity.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(signIn);
+        }else if(id == R.id.developer){
+            Intent dev = new Intent(getApplicationContext(), DeveloperActivity.class);
+            startActivity(dev);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

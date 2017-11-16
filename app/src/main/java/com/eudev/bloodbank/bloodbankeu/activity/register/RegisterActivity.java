@@ -145,7 +145,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         boolean valid = true;
 
-        if (_phoneText.getText().toString().isEmpty() || !Patterns.PHONE.matcher(_phoneText.getText().toString()).matches()) {
+        if (_phoneText.getText().toString().isEmpty() || !Patterns.PHONE.matcher(_phoneText.getText().toString()).matches()
+                ) {
             _phoneText.setError("enter a valid phone number");
             valid = false;
         } else {

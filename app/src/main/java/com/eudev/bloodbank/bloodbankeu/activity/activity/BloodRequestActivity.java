@@ -76,7 +76,6 @@ public class BloodRequestActivity extends AppCompatActivity implements
 
 
         if (!validate()) {
-            onLoginFailed();
             return;
         }
 
@@ -239,11 +238,6 @@ public class BloodRequestActivity extends AppCompatActivity implements
 
         return valid;
 
-    }
-
-    public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "SignUp failed", Toast.LENGTH_LONG).show();
-        _blood_request_btn.setEnabled(true);
     }
 
 

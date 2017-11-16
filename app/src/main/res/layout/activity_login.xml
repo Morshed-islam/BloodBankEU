@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/whatsapp"
+    android:background="@drawable/full_background"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -36,7 +36,7 @@
                 android:hint="Phone"
                 android:text=""
                 android:focusable="true"
-                android:inputType="textEmailAddress" />
+                android:inputType="number" />
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Label -->
