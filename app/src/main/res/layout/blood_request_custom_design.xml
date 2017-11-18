@@ -37,6 +37,7 @@
                     android:text="all details included in one text"
                     android:textColor="#000"
                     android:textSize="18sp"
+                    android:fontFamily="serif"
                     android:padding="5dp"
                     android:minHeight="1.5dp"
                     android:textStyle="bold" />
@@ -56,6 +57,7 @@
                         android:layout_weight="1"
                         android:text="Phone"
                         android:textColor="#000"
+                        android:fontFamily="serif"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 

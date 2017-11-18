@@ -88,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
 //                startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
@@ -138,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         Common.currentUser = user;
                         startActivity(intent);
+                        overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
                         finish();
 
                     } else {

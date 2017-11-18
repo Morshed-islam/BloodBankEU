@@ -64,7 +64,7 @@ public class AddNewMemberActivity extends AppCompatActivity {
     private void newUerAddCalling() {
 
         if (!validate()) {
-            onLoginFailed();
+
             return;
         }
 
@@ -173,9 +173,12 @@ public class AddNewMemberActivity extends AppCompatActivity {
 
     }
 
-    public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "SignUp failed", Toast.LENGTH_LONG).show();
-        _addBtn.setEnabled(true);
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
     }
+
+
 
 }

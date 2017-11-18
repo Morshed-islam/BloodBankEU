@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/full_background"
+    android:background="@color/backgroundColor"
     tools:context="com.eudev.bloodbank.bloodbankeu.activity.activity.SearchActivity">
 
     <android.support.design.widget.AppBarLayout

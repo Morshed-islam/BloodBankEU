@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:orientation="vertical"
-    android:background="@drawable/full_background">
+    android:background="@color/backgroundColor">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

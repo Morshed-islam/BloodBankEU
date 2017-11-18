@@ -11,10 +11,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_circle"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.login.LoginActivity">
+        <activity android:name=".activity.activity.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,7 +37,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.activity.SearchActivity" />
         </activity>
-        >
         <activity android:name=".activity.activity.AddNewMemberActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -48,7 +47,18 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.activity.EditProfileActivity" />
         </activity>
-        <activity android:name=".activity.activity.DeveloperActivity"></activity>
+        <activity android:name=".activity.activity.DeveloperActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.activity.DeveloperActivity"/>
+
+        </activity>
+        <activity android:name=".activity.login.LoginActivity" />
+        <activity android:name=".activity.activity.SpecialThanksActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.activity.SpecialThanksActivity"/>
+        </activity>
     </application>
 
 </manifest>

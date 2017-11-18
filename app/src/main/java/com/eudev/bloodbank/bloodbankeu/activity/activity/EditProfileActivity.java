@@ -236,7 +236,11 @@ public class EditProfileActivity extends AppCompatActivity {
         _update_btn = (Button) findViewById(R.id.update_btn);
 
     }
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+    }
 
 
 }

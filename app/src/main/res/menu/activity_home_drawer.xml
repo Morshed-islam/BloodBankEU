@@ -4,25 +4,38 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/add_new_member"
-            android:icon="@drawable/addmember"
-            android:title="Add New Member" />
+            android:icon="@drawable/add_member"
+            android:title="Add New Member"
+            android:fontFamily="serif" />
         <item
             android:id="@+id/edit_profile"
-            android:icon="@drawable/profile"
-            android:title="Edit Profile" />
+            android:icon="@drawable/edit_profile"
+            android:title="Edit Profile"
+            android:fontFamily="serif" />
         <item
             android:id="@+id/blood_request"
             android:icon="@drawable/request"
-            android:title="Blood Request" />
-        <item
-            android:id="@+id/log_out"
-            android:icon="@drawable/signout"
-            android:title="Log out" />
+            android:title="Blood Request"
+            android:fontFamily="serif" />
+
 
         <item
             android:id="@+id/developer"
-            android:icon="@drawable/developer"
-            android:title="Developer" />
+            android:icon="@drawable/dev"
+            android:title="Developer"
+            android:fontFamily="serif"/>
+
+        <item
+            android:id="@+id/special_thanks"
+            android:icon="@drawable/thanks"
+            android:title="Special Thanks"
+            android:fontFamily="serif"/>
+
+        <item
+            android:id="@+id/log_out"
+            android:icon="@drawable/signout"
+            android:title="Log out"
+            android:fontFamily="serif" />
     </group>
 
 </menu>

@@ -1,6 +1,7 @@
 package com.eudev.bloodbank.bloodbankeu.activity.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -108,7 +109,7 @@ public class ReadyDonarFragment extends Fragment {
 
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-        LayoutInflater inflater = getLayoutInflater(dBundle);
+        @SuppressLint("RestrictedApi") LayoutInflater inflater = getLayoutInflater(dBundle);
 
         final View v = inflater.inflate(R.layout.custom_dialog, null);
         dialog.setView(v);

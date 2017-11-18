@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity
     private DatabaseReference readyDonorCount;
 
     //Header Title
-    private TextView headerName,headerBloodGroup,headerPhoneNum;
+    private TextView headerName, headerBloodGroup, headerPhoneNum;
     private CircleImageView headerImg;
 
     //This is our tablayout
@@ -71,9 +71,7 @@ public class HomeActivity extends AppCompatActivity
     BloodRequestFragment bloodRequestFragment;
     DepartmentFragment departmentFragment;
 
-    String[] tabTitle={"All Donor","Ready Donor","Blood Request","Department"};
-
-
+    String[] tabTitle = {"All Donor", "Ready Donor", "Blood Request", "Department"};
 
 
     @Override
@@ -83,9 +81,6 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Blood Bank EU");
         setSupportActionBar(toolbar);
-
-
-
 
 
         //database init
@@ -112,31 +107,25 @@ public class HomeActivity extends AppCompatActivity
         totalSizeOfData();
 
 
-
         //ad load
         //ad View
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd .setAdUnitId("ca-app-pub-1851961673513824/3488626679");
+        mInterstitialAd.setAdUnitId("ca-app-pub-1851961673513824/3488626679");
         mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
 
 
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
-                startActivity(new Intent(getApplicationContext(),EditProfileActivity.class));
+                startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
                 mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
             }
         });
 
 
-
-
-        try
-        {
+        try {
             setupTabIcons();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -149,7 +138,7 @@ public class HomeActivity extends AppCompatActivity
 
             @Override
             public void onPageSelected(int position) {
-                viewPager.setCurrentItem(position,false);
+                viewPager.setCurrentItem(position, false);
 
             }
 
@@ -158,9 +147,6 @@ public class HomeActivity extends AppCompatActivity
 
             }
         });
-
-
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -173,11 +159,11 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         View headerView = navigationView.getHeaderView(0);
-        
-        headerName= (TextView) headerView.findViewById(R.id.header_name);
+
+        headerName = (TextView) headerView.findViewById(R.id.header_name);
         headerImg = (CircleImageView) headerView.findViewById(R.id.nav_profile_image);
-        headerBloodGroup= (TextView) headerView.findViewById(R.id.header_blood_group);
-        headerPhoneNum= (TextView) headerView.findViewById(R.id.header_phone_num);
+        headerBloodGroup = (TextView) headerView.findViewById(R.id.header_blood_group);
+        headerPhoneNum = (TextView) headerView.findViewById(R.id.header_phone_num);
         headerName.setText(Common.currentUser.getName());
         headerBloodGroup.setText(Common.currentUser.getBlood_group());
         headerPhoneNum.setText(Common.currentUser.getPhone());
@@ -186,9 +172,9 @@ public class HomeActivity extends AppCompatActivity
             public void onClick(View view) {
                 Toast.makeText(HomeActivity.this, "Coming Soon!! ", Toast.LENGTH_SHORT).show();
             }
-    });
+        });
 
-}
+    }
 
     @Override
     public void onBackPressed() {
@@ -217,8 +203,9 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-     if (id == R.id.action_search) {
-            startActivity(new Intent(getApplicationContext(),SearchActivity.class));
+        if (id == R.id.action_search) {
+            startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             return true;
         }
 
@@ -233,30 +220,42 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.add_new_member) {
 
-            startActivity(new Intent(getApplicationContext(),AddNewMemberActivity.class));
+            startActivity(new Intent(getApplicationContext(), AddNewMemberActivity.class));
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
 
         } else if (id == R.id.edit_profile) {
 
-            if (mInterstitialAd.isLoaded()){
+            if (mInterstitialAd.isLoaded()) {
 
                 mInterstitialAd.show();
-            }else {
-                startActivity(new Intent(getApplicationContext(),EditProfileActivity.class));
+            } else {
+                startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
+                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
             }
 
 
-
-        } else if (id == R.id.blood_request){
+        } else if (id == R.id.blood_request) {
             startActivity(new Intent(getApplicationContext(), BloodRequestActivity.class));
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
 
-        }else if (id == R.id.log_out) {
+        } else if (id == R.id.developer) {
+            Intent dev = new Intent(getApplicationContext(), DeveloperActivity.class);
+            startActivity(dev);
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+        }else if(id == R.id.special_thanks){
+            Intent thanks = new Intent(getApplicationContext(), SpecialThanksActivity.class);
+            startActivity(thanks);
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+
+        } else if (id == R.id.log_out) {
             Intent signIn = new Intent(getApplicationContext(), LoginActivity.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(signIn);
-        }else if(id == R.id.developer){
-            Intent dev = new Intent(getApplicationContext(), DeveloperActivity.class);
-            startActivity(dev);
+            overridePendingTransition(R.anim.pull_in_left, R.anim.push_out_right);
+
         }
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -267,25 +266,21 @@ public class HomeActivity extends AppCompatActivity
     //--------------Tablayout method works------------
 
 
-
-
-
-    private void setupViewPager(ViewPager viewPager)
-    {
+    private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        allDonarFragment =new AllDonarFragment();
+        allDonarFragment = new AllDonarFragment();
         readyDonarFragment = new ReadyDonarFragment();
         bloodRequestFragment = new BloodRequestFragment();
         departmentFragment = new DepartmentFragment();
-        adapter.addFragment(allDonarFragment,"All Donor");
-        adapter.addFragment(readyDonarFragment,"Ready Donor");
-        adapter.addFragment(bloodRequestFragment,"Blood Request");
-        adapter.addFragment(departmentFragment,"Department");
+        adapter.addFragment(allDonarFragment, "All Donor");
+        adapter.addFragment(readyDonarFragment, "Ready Donor");
+        adapter.addFragment(bloodRequestFragment, "Blood Request");
+        adapter.addFragment(departmentFragment, "Department");
         viewPager.setAdapter(adapter);
     }
 
     private View prepareTabView(final int pos) {
-        View view = getLayoutInflater().inflate(R.layout.custom_tab,null);
+        View view = getLayoutInflater().inflate(R.layout.custom_tab, null);
         TextView tv_title = (TextView) view.findViewById(R.id.tv_title);
         final TextView tv_count = (TextView) view.findViewById(R.id.tv_count);
         tv_title.setText(tabTitle[pos]);
@@ -294,16 +289,15 @@ public class HomeActivity extends AppCompatActivity
         final long[] unreadCount = new long[4];
 
 
-
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-               long size = dataSnapshot.getChildrenCount();
+                long size = dataSnapshot.getChildrenCount();
                 unreadCount[0] = size;
 //                unreadCount[1] = 4;
 //                unreadCount[2] = 5;
 //                unreadCount[3] = 8;
-                tv_count.setText(""+unreadCount[pos]);
+                tv_count.setText("" + unreadCount[pos]);
 
 
             }
@@ -319,12 +313,12 @@ public class HomeActivity extends AppCompatActivity
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 long size = dataSnapshot.getChildrenCount();
-               // unreadCount[1] = 0;
+                // unreadCount[1] = 0;
                 unreadCount[2] = size;
-               // unreadCount[3] = 0;
-                tv_count.setText(""+unreadCount[pos]);
+                // unreadCount[3] = 0;
+                tv_count.setText("" + unreadCount[pos]);
 
-                Log.i("morshed","blood size: "+size);
+                Log.i("morshed", "blood size: " + size);
             }
 
             @Override
@@ -343,12 +337,12 @@ public class HomeActivity extends AppCompatActivity
 
                 long size = dataSnapshot.getChildrenCount();
 
-                Log.i("morshed","size is: "+size);
+                Log.i("morshed", "size is: " + size);
 
                 unreadCount[1] = size;
                 //unreadCount[2] = size;
                 // unreadCount[3] = 0;
-                tv_count.setText(""+unreadCount[pos]);
+                tv_count.setText("" + unreadCount[pos]);
 
             }
 
@@ -357,9 +351,6 @@ public class HomeActivity extends AppCompatActivity
 
             }
         });
-
-
-
 
 
 //        if(unreadCount[pos]>0)
@@ -374,11 +365,9 @@ public class HomeActivity extends AppCompatActivity
         return view;
     }
 
-    private void setupTabIcons()
-    {
+    private void setupTabIcons() {
 
-        for(int i=0;i<tabTitle.length;i++)
-        {
+        for (int i = 0; i < tabTitle.length; i++) {
             /*TabLayout.Tab tabitem = tabLayout.newTab();
             tabitem.setCustomView(prepareTabView(i));
             tabLayout.addTab(tabitem);*/
@@ -393,14 +382,12 @@ public class HomeActivity extends AppCompatActivity
     private void totalSizeOfData() {
 
 
-
     }
 
 
-
-        public boolean isPermissionGranted() {
+    public boolean isPermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (ActivityCompat.checkSelfPermission(getApplicationContext(),android.Manifest.permission.CALL_PHONE)
+            if (ActivityCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.CALL_PHONE)
                     == PackageManager.PERMISSION_GRANTED) {
                 Log.v("TAG", "Permission is granted");
                 return true;
@@ -415,7 +402,6 @@ public class HomeActivity extends AppCompatActivity
             return true;
         }
     }
-
 
 
     @Override
@@ -440,7 +426,6 @@ public class HomeActivity extends AppCompatActivity
             // permissions this app might request
         }
     }
-
 
 
 }
