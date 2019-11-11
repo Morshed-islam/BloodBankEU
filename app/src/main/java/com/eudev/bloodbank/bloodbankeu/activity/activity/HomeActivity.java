@@ -5,23 +5,22 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.view.ViewPager;
+
 import android.util.Log;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;
 
 import com.eudev.bloodbank.bloodbankeu.R;
 import com.eudev.bloodbank.bloodbankeu.activity.adapter.ViewPagerAdapter;
@@ -32,9 +31,9 @@ import com.eudev.bloodbank.bloodbankeu.activity.fragment.ReadyDonarFragment;
 import com.eudev.bloodbank.bloodbankeu.activity.login.LoginActivity;
 import com.eudev.bloodbank.bloodbankeu.activity.model.BloodRequest;
 import com.eudev.bloodbank.bloodbankeu.activity.model.Common;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
+
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,7 +48,7 @@ import static java.security.AccessController.getContext;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private InterstitialAd mInterstitialAd;
+//    private InterstitialAd mInterstitialAd;
 
     private FirebaseDatabase database;
     private DatabaseReference ref;
@@ -109,18 +108,18 @@ public class HomeActivity extends AppCompatActivity
 
         //ad load
         //ad View
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-1851961673513824/3488626679");
-        mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
-
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
-                mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
-            }
-        });
+//        mInterstitialAd = new InterstitialAd(this);
+//        mInterstitialAd.setAdUnitId("ca-app-pub-1851961673513824/3488626679");
+//        mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
+//
+//
+//        mInterstitialAd.setAdListener(new AdListener() {
+//            @Override
+//            public void onAdClosed() {
+//                startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
+//                mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build());
+//            }
+//        });
 
 
         try {
@@ -225,13 +224,17 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.edit_profile) {
 
-            if (mInterstitialAd.isLoaded()) {
 
-                mInterstitialAd.show();
-            } else {
-                startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
-                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
-            }
+            startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
+            overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+
+//            if (mInterstitialAd.isLoaded()) {
+//
+//                mInterstitialAd.show();
+//            } else {
+////                startActivity(new Intent(getApplicationContext(), EditProfileActivity.class));
+////                overridePendingTransition(R.anim.pull_in_right, R.anim.push_out_left);
+//            }
 
 
         } else if (id == R.id.blood_request) {

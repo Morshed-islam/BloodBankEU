@@ -22,40 +22,46 @@
         <!--android:layout_marginBottom="24dp"-->
         <!--android:layout_gravity="center_horizontal" />-->
 
+
+        <EditText
+            android:id="@+id/login_input_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:text=""
+            android:focusable="true"
+            android:inputType="number" />
+
         <!-- Email Label -->
-        <android.support.design.widget.TextInputLayout
+<!--        <android.support.design.widget.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            android:layout_marginTop="8dp">-->
+
+<!--   -->
+<!--        </android.support.design.widget.TextInputLayout>-->
+
+
+
+        <EditText
+            android:id="@+id/login_input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/login_input_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Phone"
-                android:text=""
-                android:focusable="true"
-                android:inputType="number" />
-        </android.support.design.widget.TextInputLayout>
-
+            android:hint="Password"
+            android:text=""
+            android:inputType="textPassword" />
         <!-- Password Label -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+<!--        <android.support.design.widget.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            android:layout_marginTop="8dp">-->
 
-            <EditText
-                android:id="@+id/login_input_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password"
-                android:text=""
-                android:inputType="textPassword" />
-        </android.support.design.widget.TextInputLayout>
+<!--        -->
+<!--        </android.support.design.widget.TextInputLayout>-->
 
-        <info.hoang8f.widget.FButton
+        <Button
             android:id="@+id/btn_signin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,7 +70,6 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
             android:textColor="#fff"
-            app:buttonColor="@color/fbutton_color_green_sea"
             app:cornerRadius="4dp" />
 
         <TextView
@@ -77,14 +82,13 @@
             android:text="No account yet? Create one"
             android:textSize="16dip" />
 
-        <info.hoang8f.widget.FButton
+        <Button
             android:id="@+id/btn_signUp_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="Sign Up"
             android:textColor="#fff"
-            app:buttonColor="@color/fbutton_default_shadow_color"
             app:cornerRadius="4dp" />
 
 

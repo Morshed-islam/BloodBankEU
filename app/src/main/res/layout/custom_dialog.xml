@@ -41,7 +41,7 @@
 
     </LinearLayout>
 
-    <info.hoang8f.widget.FButton
+    <Button
         android:layout_marginTop="10dp"
         android:id="@+id/done_btn"
         android:layout_width="wrap_content"
@@ -50,7 +50,6 @@
         android:text="Done"
         android:textColor="#fff"
         android:layout_marginBottom="20dp"
-        app:buttonColor="@color/fbutton_default_shadow_color"
         app:cornerRadius="4dp" />
 
     </LinearLayout>

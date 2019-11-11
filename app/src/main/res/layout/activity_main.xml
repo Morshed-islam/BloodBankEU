@@ -39,7 +39,7 @@
         android:orientation="horizontal">
 
 
-        <info.hoang8f.widget.FButton
+        <Button
             android:id="@+id/signUp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -47,10 +47,9 @@
             android:padding="8dp"
             android:text="Sign Up"
             android:textColor="#fff"
-            app:buttonColor="#507060"
             app:cornerRadius="4dp" />
 
-        <info.hoang8f.widget.FButton
+        <Button
             android:id="@+id/signIn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

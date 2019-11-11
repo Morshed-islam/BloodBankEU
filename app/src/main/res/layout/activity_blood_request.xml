@@ -7,19 +7,19 @@
     android:orientation="vertical"
     android:background="@color/backgroundColor">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -67,80 +67,80 @@
         </LinearLayout>
 
         <!--  Name Label -->
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/request_quantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-           >
+            android:hint="Quantity (How many bags)"
+            android:inputType="numberDecimal" />
 
-            <EditText
-                android:id="@+id/request_quantity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Quantity (How many bags)"
-                android:inputType="numberDecimal" />
-        </android.support.design.widget.TextInputLayout>
+<!--        <android.support.design.widget.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--           >-->
+<!--        </android.support.design.widget.TextInputLayout>-->
 
         <!-- Email Label -->
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/request_patient_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
+            android:hint="Patient Type (Cancer)"
+            android:inputType="text" />
 
-            <EditText
-                android:id="@+id/request_patient_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Patient Type (Cancer)"
-                android:inputType="text" />
+<!--        <android.support.design.widget.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_marginTop="5dp">-->
 
-        </android.support.design.widget.TextInputLayout>
+<!--        </android.support.design.widget.TextInputLayout>-->
 
 
         <!--id label-->
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/request_hospital_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
+            android:inputType="text"
+            android:hint="Hospital/Clinic name" />
 
-            <EditText
-                android:id="@+id/request_hospital_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Hospital/Clinic name" />
-        </android.support.design.widget.TextInputLayout>
+<!--        <android.support.design.widget.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_marginTop="5dp">-->
+<!--        </android.support.design.widget.TextInputLayout>-->
 
         <!-- Password Label -->
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/request_area"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
+            android:hint="Area (Mohammadpur)"
+            android:inputType="text" />
 
-            <EditText
-                android:id="@+id/request_area"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Area (Mohammadpur)"
-                android:inputType="text" />
-        </android.support.design.widget.TextInputLayout>
+<!--        <android.support.design.widget.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_marginTop="5dp">-->
+<!--        </android.support.design.widget.TextInputLayout>-->
 
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/request_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
+            android:hint="Contact no"
+            android:inputType="number" />
 
-            <EditText
-                android:id="@+id/request_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contact no"
-                android:inputType="number" />
-        </android.support.design.widget.TextInputLayout>
+<!--        <android.support.design.widget.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_marginTop="5dp">-->
+<!--        </android.support.design.widget.TextInputLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -204,7 +204,7 @@
 
 
         <!-- Signup Button -->
-        <info.hoang8f.widget.FButton
+        <Button
             android:id="@+id/blood_request_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -212,7 +212,6 @@
             android:padding="8dp"
             android:text="Blood Request"
             android:textColor="#fff"
-            app:buttonColor="@color/fbutton_default_shadow_color"
             app:cornerRadius="4dp" />
 
 

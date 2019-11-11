@@ -7,17 +7,16 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.eudev.bloodbank.bloodbankeu.R;
 import com.eudev.bloodbank.bloodbankeu.activity.activity.UserDetailsActivity;
@@ -30,6 +29,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 /**
@@ -68,7 +68,7 @@ public class AllDonarFragment extends Fragment {
         ref = database.getReference("User");
 
         View view = inflater.inflate(R.layout.fragment_all_donar, container, false);
-        ;
+
 
 
         recycler_user = (RecyclerView) view.findViewById(R.id.recycler_user);
@@ -80,6 +80,7 @@ public class AllDonarFragment extends Fragment {
 
         loadAllDonar();
 
+        Log.i("data","gddddddddd");
 
         return view;
     }

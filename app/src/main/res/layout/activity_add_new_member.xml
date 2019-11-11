@@ -7,19 +7,19 @@
     android:orientation="vertical"
     android:background="@color/backgroundColor">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -45,51 +45,57 @@
         <!--android:layout_marginBottom="24dp"-->
         <!--android:layout_gravity="center_horizontal" />-->
 
+        <EditText
+            android:id="@+id/new_member_input_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:inputType="textCapWords" />
+
         <!--  Name Label -->
-        <android.support.design.widget.TextInputLayout
+<!--        <android.support.design.widget.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_marginTop="5dp">-->
+
+<!--         -->
+<!--        </android.support.design.widget.TextInputLayout>-->
+
+
+
+        <EditText
+            android:id="@+id/new_member_input_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
-
-            <EditText
-                android:id="@+id/new_member_input_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name"
-                android:inputType="textCapWords" />
-        </android.support.design.widget.TextInputLayout>
-
+            android:hint="Phone number"
+            android:inputType="textEmailAddress" />
         <!-- Email Label -->
-        <android.support.design.widget.TextInputLayout
+<!--        <android.support.design.widget.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_marginTop="5dp">-->
+
+<!--        </android.support.design.widget.TextInputLayout>-->
+
+
+
+        <EditText
+            android:id="@+id/new_member_input_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
-
-            <EditText
-                android:id="@+id/new_member_input_phone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Phone number"
-                android:inputType="textEmailAddress" />
-        </android.support.design.widget.TextInputLayout>
-
-
+            android:hint="Varsity ID num"
+            />
         <!--id label-->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
+<!--        <android.support.design.widget.TextInputLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_marginTop="5dp">-->
 
-            <EditText
-                android:id="@+id/new_member_input_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Varsity ID num"
-                />
-        </android.support.design.widget.TextInputLayout>
+<!--     -->
+<!--        </android.support.design.widget.TextInputLayout>-->
 
 
 
@@ -182,7 +188,7 @@
 
 
         <!-- Signup Button -->
-        <info.hoang8f.widget.FButton
+        <Button
             android:id="@+id/new_member_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -190,7 +196,6 @@
             android:text="Add New member"
             android:textColor="#fff"
             android:layout_marginBottom="20dp"
-            app:buttonColor="@color/fbutton_default_shadow_color"
             app:cornerRadius="4dp" />
 
 
